@@ -11,7 +11,7 @@
         let a ={};
         //Object.keys()获取可枚举的私有属性名称,返回值是一个数组,其中包含对象的可枚举属性名称
         //如果数组长度为0,则是空数组
-        console.log(typeof(a), Object.keys(a).length?"a不是空数组":"a是空数组");
+        console.log(a===null?null:typeof(a), Object.keys(a).length?"a不是空数组":"a是空数组");
     </script>
 </body>
 </html>
