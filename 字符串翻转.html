@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //变成 Developer am i;
+        let a ="i am developer";
+        //先将字符串变成数组
+         a = a.split(" ").reverse();//['i','am','developer']
+         //将数组变成字符串
+         a=a.join(" ") //developer am i
+         //charAt查找字符串中第几个字符，toUpperCase()转成大写,substr从下标1开始截取
+         a= a.charAt(0).toUpperCase()+a.substr(1)//a.substr(1) 
+         console.log(a);
+         /* for(let i = 0;i<Math.ceil(a.length/2);i++){
+            let cont = a[i];
+            a[i] = a[a.length-i-1];
+            a[a.length-i-1] = cont
+         } */
+        
+    </script>
+</body>
+</html>
