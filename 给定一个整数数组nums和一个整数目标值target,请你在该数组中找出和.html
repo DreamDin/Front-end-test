@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //给定一个整数数组nums和一个整数目标值target,请你在该数组中找出和为目标值返回它们的数组下标
+        let nums = [2,7,11,15],target = 9;
+        //输出：[0,1];
+        for(let i = 0;i<nums.length-1;i++){
+             if(nums[i] + nums[i+1] === target){
+                console.log([i,i+1]); 
+             }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       const getJson = function (url){
+        const promise = new Promise(function(resolve,reject){
+            const handler = function(){
+                if(this.readyState !== 4){
+                    return;
+                }
+                if(this.status === 200){
+                    resolve(this.response);
+                }else{
+                    reject(new Error(this.statusText));
+                }
+            };
+            const client = new XMLHttpRequest();
+            client.open("GET",url);
+            client.onreadystatechange = handler;
+            client.responseType ="json";
+            client.setRequestHeader("Accept","application/json");
+            client.send(); 
+        });
+        return promise;
+       };
+
+       getJSON("/posts.json").then(function(json){
+        console.log("Contents:" + json);
+       },function(error){
+        console.error("出错了",error);
+       })
+        
+       //拓展：Promise封装ajax的get、post请求：
+       const ajaxhttp = function(url,type) {
+            const promise = new Promise(function(resolve, reject){
+                if(type === "get"){
+                    $.get(url, (data) => {
+                        if(data.status === "200") {
+                            resolve(data);
+                        } else {
+                            reject(data.err);
+                        }
+                    });
+                }
+                if(type === "post"){
+                    $.post(url, (data) => {
+                        if(data.status === "200") {
+                            resolve(data);
+                        } else {
+                            reject(data.err);
+                        }
+                    });
+                }
+            });
+            return promise;
+        };
+ 
+        ajaxhttp("/code/getauthcode.do","get").then(function(data) {
+            console.log(data);
+        }, function(error) {
+            //console.error打印一个错误
+            console.error(error);
+        });
+    </script>
+</body>
+
+</html>
